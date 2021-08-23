@@ -1,4 +1,4 @@
-class Usercontroller {
+class UserController {
   async registration(req, res) {}
 
   async login(req, res) {}
@@ -6,4 +6,4 @@ class Usercontroller {
   async check(req, res) {}
 }
 
-module.exports = new Usercontroller()
+module.exports = new UserController()
