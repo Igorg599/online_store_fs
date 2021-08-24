@@ -4,17 +4,17 @@ const sequelize = require("./db")
 const models = require("./models/models")
 const cors = require("cors")
 const router = require("./routes")
+const errorHandler = require("./middleware/ErrorHandlingMiddleware")
 
 const PORT = process.env.PORT || 4004
 
 const app = express()
-app.use(cors())
-app.use(express.json())
-app.use("/api", router)
+app.use(cors()) // обработка заголовков
+app.use(express.json()) // обработка json-объектов
+app.use("/api", router) // обработка роутов
 
-// app.get("/", (req, res) => {
-//   res.status(200).json({ message: "WOW" })
-// })
+// Обработка ошибок, всегда последний Middleware
+app.use(errorHandler)
 
 const start = async () => {
   try {
